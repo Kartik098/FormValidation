@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            display: flex;
+            justify-content: center;
+        }
+        fieldset{
+            margin-top: 200px;
+            text-align: center;
+            padding: 30px;
+        }
+        input{
+            margin: 10px;
+
+        }
+    </style>
+</head>
+<body>
+    <fieldset>
+        <legend>Validation Form</legend>
+        <form action="">
+        <input type="text" name="name" placeholder="Name" pattern=".{6,}" title="Ten or more characters"><br>
+        <input type="email" name="email" placeholder="Email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"><br>
+        <input type="password" name="password" id="password" placeholder="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"><br>
+        <input type="password" name="c-password" id="confirm_password" placeholder="confirm password"><br>
+        <button type="submit">Submit</button>
+    </form>
+    </fieldset>
+    
+    <script>
+        var password = document.getElementById("password")
+  , confirm_password = document.getElementById("confirm_password");
+
+function validatePassword(){
+  if(password.value != confirm_password.value) {
+    confirm_password.setCustomValidity("Passwords Don't Match");
+  } else {
+    confirm_password.setCustomValidity('');
+  }
+}
+
+password.onchange = validatePassword;
+confirm_password.onkeyup = validatePassword;
+    </script>
+</body>
+</html>
